@@ -1,0 +1,12 @@
+<h1>Course List</h1>
+
+<% @courses.each do |course| %>
+  <% students = course.students_and_grades %>
+
+  <ul id="course-<%= course.id %>">
+    <% students.each do |student| %>
+      <li id='name'>Name: <%= student.name %></li>
+      <li id='grade'>Grade: <%= student.grade %></li><br/>
+    <% end %>
+  </ul>
+<% end %>

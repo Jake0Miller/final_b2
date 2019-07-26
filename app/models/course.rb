@@ -4,4 +4,10 @@ class Course < ApplicationRecord
 
   validates_presence_of :name
 
+  def students_and_grades
+    students.joins(:student_courses)
+            .select('students.*, student_courses.grade')
+            .order('student_courses.grade DESC')
+            .order('students.name')
+  end
 end

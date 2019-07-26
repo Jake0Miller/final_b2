@@ -4,4 +4,8 @@ class Student < ApplicationRecord
 
   validates_presence_of :name
 
+  def courses_with_grades
+    courses.joins(:student_courses)
+           .select('courses.*, student_courses.grade')
+  end
 end
